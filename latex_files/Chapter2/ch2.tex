@@ -1,0 +1,71 @@
+\chapter{Literature Survey}
+\label{ch:LR}
+
+In the field of autonomous driving, a lot of research is going on. Recent papers have been reviewed and findings from a few of them are listed below. 
+
+
+The work by Zhao et al., 2020 \cite{zhao2020deep} aims to model the decision making and interactions between various vehicles which run on highways. Double Deep Q-Network (DDQN) is employed to train the host vehicle. An open source simulation platform called 'SUMO - Simulation of Urban Mobility' is used to implement the work. The driving environment is created by having three driving lanes and randomly distributing 20 cars on the highway. While driving, the host constantly measures the distance between itself and the car ahead of it. In case the distance reduces between successive measurements, it begins to apply brakes to avoid collision. The speed of the host is altered accordingly by the algorithm. 
+
+
+
+\par Deep Deterministic Policy Gradient (DDPG)  is one of the significant algorithms in the field of RL. It has been thoroughly explained in the work by Huang et al., 2019 \cite{huang2019end}. In any autonomous driving system, mapping of driving state to driving action is an important criteria. This work establishes the same mapping using DDPG algirithm on TORCS simulation software. Here, actor network and target actor are used for outputting the best action for a particular state. Q-value is estimated using critic and target critic network. The transitions obtained from exploration are stored in replay buffer.  
+
+\par The work done by Zhang et al., 2018 \cite{zhang2018human} focuses on using Double Deep Q Learning to build the vehicle speed control model. In Q Learning, an agent selects an action with best Q value which might not be an optimal choice. This is considered as over-estimation of action value which results in a complicated learning process. To resolve the over-estimation, two separate Q value estimators (Double Q) can be used. Unbiased Q-value estimation of the actions can be done by using these two separate estimators. The implementation of this concept using Deep Neural Networks is known as Double Deep Q Learning. The conventional supervised learning approach is not used so that the system is forced to approximate the values of the function by interacting with the environment. It also designes a reward network where each state is mapped to a reward expressing the expectation of the state. 
+Double Deep Q Learning is efficient in both value accuracy and policy quality. The authors have reported that DDQN model’s score is very high when compared with that of Deep Q-Network (DQN). 
+
+\par
+The work by Chopra et al., 2020 \cite{chopra2020end} is aimed at steering the vehicle in its path with the help of Deep Q-Learning algorithm. The model uses raw images, sensor inputs and calculated rewards to create a Q-value approximator which is used to steer the car. Authors were able to develop an algorithm to achieve the same in TORCS simulator. The drawback of this work is that it is very time consuming to train the model. This drawback provides a future scope of implementing Imitation Learning to make the algorithm faster by first training it using labelled data and then running RL on it. 
+Table \ref{table:0} shows the state space, action space and reward function of various existing work related to autonomous driving using reinforcement learning. 
+
+%new paper from here. 
+This survey paper by Elallid et al. 2022 \cite{elallid2022comprehensive} focuses on deep learning and reinforcement learning based approaches on autonomous vehicles with major functionalities such as scene understanding, decision making, motion planning, vehicle control etc. This paper reviews the literatures pertaining to autonomous vehicles that use DL/RL from 2016 to 2021. An extensive comparison is also made by the authors with respect to the functionalities listed above. It thoroughly explains the various sensors and their uses in autonomous vehicles. It also highlights various challenges which need to be addressed by the researchers in the days to come. One of the main challenges are behavious of AVs in different weather and lighting conditions. The authors are also unsure about the reliability of the Neural Network models that are trained using datasets. 
+
+The work by Rasheed Hussain et al. \citenum{hussain2018autonomous} focuses on the results that have been accomplished till now and the challenges that lie ahead for researchers working in the field  The automobile industry attained significant milestones in designing reliable, safe, and efficient vehicles throughout the last century. Because of momentous progress in computation and communication technologies, autonomous vehicles are becoming a dream come true. 
+
+The work by Zhu et al. 2020 \citen{zhu2020safe} is a car-following simulation model i.e. the agent learning to follow the lead vehicle that is being controlled by a human in front of it. Rather than utilizing a plethora of sensors, they have just used the distance between the agent and the lead vehicle to calculate time for collision, jerk in driving etc. The reward function is developed by observing human driving data captured real time from the lead car and later combining it with driving related features such as efficiency, comfort and safety. They have used 'Next Generation Simulation' software for the implementation. 
+
+This paper by Omeiza et al. 2021 \cite{omeiza2021explanations} is about 'explainable autonomous driving'. 'Explainability' is an essential 
+prerequisite for AVs. AVs must be able to explicate what they see, do, and might do in the environments in which they interact. This will build confidence and trust in AVs. Four main points are addressed in this paper. They are motivation for explanations, requirements of explanations for autonomous vehicles, review of previous work on explanations for AVs, and finally, authors have given a conceptual framework for autonomous vehicles explainability.
+
+The paper by Grigorescu et al. 2020 \cite{grigorescu2020survey} addresses the major areas which form open challenges for the budding researchers in the field of autonomous driving. They make a strong statement that Deep Learning and Artificial Intelligence will play a phenomenal role in overcoming these challenges. Among the major areas they addressed, functional safety and real time computing and communication prove to be really challenging.
+
+The paper by Yang et al. 2020 \cite{ma2020artificial} is a complete survey of significant works in the area of AVs. It aims to analyze the use of Artificial Intelligence in building the primary applications of autonomous driving. These applications are perception, localization \& mapping, and decision making. It explores the recent approaches to comprehend how AI can be made use of and what are the challenges associated with their implementation. Based on the survey of current practices and advancement of the technologies, this paper further provides acumens into impending opportunities regarding the use of AI in juxtaposition with other developing technologies.
+
+
+In the work done by Cao et al. 2022 \cite{cao2022trustworthy} the authors have discussed about Trustworthy improvement Reinforcement Learning (TiRL). It has been mentioned that in spite of RL algorithms having the ability to constantly improve, there are instances where they are unreliable due to rule or model based algorithms. To get the best of both worlds the authors have designed a decision making framework that utilizes RL and rule/model based algorithms.By doing so, their final framework has the potential to self-learn with better reliability. They have done simulations with more than 42000 kilometres of driving which was calibrated with human driving data. They have proved that TiRL can do better than any other arbitrary model based policy. 
+
+\begin{table}[h]
+	\centering
+	\caption{Details of states, actions and rewards }
+	\smallskip
+	\begin{tabular}{ |p{2cm}|p{3.5cm}|p{3.5cm}|p{3cm}|  }
+		
+		
+		\hline
+		\textbf{Work by}  & \textbf{State space}  &\textbf{Action space} &\textbf{Reward function} \\		
+		\hline
+		\hline
+		Zhao et al., 2020\cite{zhao2020deep} & $S = \newline \{ pos_x, pos_y, v_x, v_y \}$ &$A = \newline \{acceleration \newline value\} $ & $\newline R = 1 - \frac{V_{max} - V_x}{V_{max}}$\\
+		\hline
+		Huang et al., 2019\cite{huang2019end} & $S = \newline \{v_{x,y,z}\epsilon R^3, \zeta\epsilon R^{19}, \newline \delta, \theta \}$   & $A=\{ accelerate, \newline brake, steer\} $ & $R = vcos\theta \newline - vsin\theta - v\delta$\\
+		\hline
+		Zhang et al., 2018\cite{zhang2018human}& GPS position, \newline acceleration, relative speed and position & $A = \{ $a$ | $a$\epsilon \newline \{accelerate, \newline decelerate, \newline maintain\}\}$ &R = \{-2, -1, 0, 1, 2\} depending upon the action taken\\
+		\hline
+		Chopra et al., 2020\cite{chopra2020end}&Camera images & $A = \newline \{left, half\_left, \newline no\_action, \newline half\_right, right \} $ & $R = vcos \theta $ \\
+		\hline
+	\end{tabular}
+	\label{table:0}
+\end{table}
+
+
+%\section{Section 1}
+%
+%you may include the details of background theory/work/literature review etc.
+%
+%\begin{definition}
+%vvvvv
+%\end{definition}
+%
+%\begin{definition}
+%ttttttt
+%\end{definition}
